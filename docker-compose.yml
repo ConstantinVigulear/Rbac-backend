@@ -31,15 +31,16 @@ services:
     depends_on:
       - db
 
-  frontend:
-    container_name: frontend
-    image: kostavigulear/rbac-frontend:0.0.1
-    ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
-    depends_on:
-      - backend
+#  frontend:
+#    container_name: frontend
+#    image: kostavigulear/rbac-frontend:0.0.1
+#    restart: always
+#    ports:
+#      - "3000:3000"
+#    stdin_open: true
+#    tty: true
+#    depends_on:
+#      - backend
 
 volumes:
   data:

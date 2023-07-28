@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /** Created by kosta on 3/31/2023 */
 @Entity
@@ -43,12 +44,9 @@ public class Role {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof Role role)) return false;
-
-    if (getId() != null ? !getId().equals(role.getId()) : role.getId() != null) return false;
-    if (getDescription() != null
-        ? !getDescription().equals(role.getDescription())
-        : role.getDescription() != null) return false;
-    return getUsers() != null ? getUsers().equals(role.getUsers()) : role.getUsers() == null;
+    return Objects.equals(getId(), role.getId())
+        && Objects.equals(getDescription(), role.getDescription())
+        && Objects.equals(getUsers(), role.getUsers());
   }
 
   @Override

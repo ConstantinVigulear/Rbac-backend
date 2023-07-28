@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /** Created by kosta on 3/31/2023 */
 @Entity
@@ -46,29 +47,23 @@ public class User {
     return email;
   }
 
-
   public int getSalary() {
     return salary;
   }
-
 
   public List<Role> getRoles() {
     return roles;
   }
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof User user)) return false;
-
-    if (getSalary() != user.getSalary()) return false;
-    if (getName() != null ? !getName().equals(user.getName()) : user.getName() != null)
-      return false;
-    if (getEmail() != null ? !getEmail().equals(user.getEmail()) : user.getEmail() != null)
-      return false;
-    if (getActive() != user.getActive()) return false;
-    return getRoles() != null ? getRoles().equals(user.getRoles()) : user.getRoles() == null;
+    return getSalary() == user.getSalary()
+        && getActive() == user.getActive()
+        && Objects.equals(getName(), user.getName())
+        && Objects.equals(getEmail(), user.getEmail())
+        && Objects.equals(getRoles(), user.getRoles());
   }
 
   @Override
